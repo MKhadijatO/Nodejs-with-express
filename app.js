@@ -1,5 +1,4 @@
 // IMPORT PACKAGE
-
 const express = require ('express');
 let app = express();
 
@@ -7,6 +6,11 @@ let app = express();
 
 app.get('/', (req, res) => {
     res.status(200).json({greeting: 'Hello, friend', message: 'This is just an example'});
+})
+
+//post request
+app.post('/', () => {
+   
 })
 
 
