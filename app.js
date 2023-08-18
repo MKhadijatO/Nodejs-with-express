@@ -6,7 +6,7 @@ let app = express();
 // ROUTE = HTTP METHOD + URL
 
 app.get('/', (req, res) => {
-    res.status(200).send('<h3>Hello from express server</h3>');
+    res.status(200).json({greeting: 'Hello, friend', message: 'This is just an example'});
 })
 
 
