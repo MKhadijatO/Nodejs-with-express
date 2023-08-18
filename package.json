@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-with-express",
+  "version": "1.0.0",
+  "description": "Learning express js with node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MKhadijatO/Nodejs-with-express.git"
+  },
+  "author": "Khadijat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MKhadijatO/Nodejs-with-express/issues"
+  },
+  "homepage": "https://github.com/MKhadijatO/Nodejs-with-express#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
