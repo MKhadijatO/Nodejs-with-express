@@ -1,12 +1,20 @@
 // IMPORT PACKAGE
-const fs = require ('fs')
+const fs = require ('fs');
 const express = require ('express');
+
 let app = express();
+let movies = JSON.parse(fs.readFileSync('./data/movies.json'));
 
 // ROUTE = HTTP METHOD + URL
 
 app.get('/api/v1/movies', (req, res) => {
-    res.status(200).json(html);
+    res.status(200).json({
+        //jsend json formatting 
+        status: "success",
+        data: {
+            movies: movies
+        }
+    });
 })
 
 
