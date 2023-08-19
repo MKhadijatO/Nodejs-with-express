@@ -1,21 +1,14 @@
-const fs = require('fs');
-
-
 // IMPORT PACKAGE
+const fs = require ('fs')
 const express = require ('express');
 let app = express();
 
 // ROUTE = HTTP METHOD + URL
-const html = fs.readFileSync('./Files/index.html', 'utf-8');
 
-app.get('/', (req, res) => {
-    res.status(200).send(html);
+app.get('/api/v1/movies', (req, res) => {
+    res.status(200).json(html);
 })
 
-//post request
-// app.post('/', () => {
-   
-// })
 
 
 
