@@ -11,6 +11,7 @@ app.get('/api/v1/movies', (req, res) => {
     res.status(200).json({
         //jsend json formatting 
         status: "success",
+        count: movies.length,
         data: {
             movies: movies
         }
