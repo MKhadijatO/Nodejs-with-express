@@ -20,6 +20,18 @@ app.get('/api/v1/movies', (req, res) => {
     });
 })
 
+// GET REQUEST - api/v1/movies/id
+
+app.get('/api/v1/movies/:id', (req, res) => {
+    console.log(req.params);
+
+    res.send('Test movie')
+})
+
+
+
+
+
 //POST REQUEST - api/v1/movies
 
 app.post('/api/v1/movies', (req, res) => {
