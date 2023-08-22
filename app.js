@@ -67,7 +67,14 @@ app.post('/api/v1/movies', (req, res) => {
 // PATCH REQUEST (UPDATE RESOURCE)
 app.patch('/api/v1/movies/:id', (req, res) => {
     let id  = req.params.id * 1;
-    let movieToUpdate = movies.find(el => el.id === id)
+    let movieToUpdate = movies.find(el => el.id === id);
+    if (!movieToUpdate){
+        return res.status(404).json({
+            status: 'failed',
+            message: 'Movie with ID ' +id+ ' not found'
+        })
+    }
+
     let index = movies.indexOf(movieToUpdate); //if id =7, index = 6
 
     Object.assign(movieToUpdate, req.body);
