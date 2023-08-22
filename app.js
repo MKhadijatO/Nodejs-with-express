@@ -81,7 +81,7 @@ app.patch('/api/v1/movies/:id', (req, res) => {
 
     movies[index] = movieToUpdate;
 
-    fs.writeFileSync('./data/movies.json', JSON.stringify(movies), (err) => {
+    fs.writeFile('./data/movies.json', JSON.stringify(movies), (err) => {
         req.status(200).json({
             status: "success",
             data: {
@@ -89,6 +89,26 @@ app.patch('/api/v1/movies/:id', (req, res) => {
             }
         })
     })
+
+})
+
+//DELETE DATA
+app.delete('api/v1/movies/:id', (req, res) => {
+    const id = req.params.id * 1;
+    const movieToDelete = movies.find(el => el.id === id);
+    const index = movies.indexOf(movieToDelete);
+
+    movies.splice(index, 1);
+
+    fs.writeFile('./data/movies.json', JSON.stringify(movies), (err) => {
+        req.status(204).json({
+            status: "success",
+            data: {
+                movie: null
+            }
+        })
+    })
+
 
 })
 
