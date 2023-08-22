@@ -64,6 +64,31 @@ app.post('/api/v1/movies', (req, res) => {
 });
 
 
+// PATCH REQUEST (UPDATE RESOURCE)
+app.patch('/api/v1/movies/:id', (req, res) => {
+    let id  = req.params.id * 1;
+    let movieToUpdate = movies.find(el => el.id === id)
+    let index = movies.indexOf(movieToUpdate); //if id =7, index = 6
+
+    Object.assign(movieToUpdate, req.body);
+
+    movies[index] = movieToUpdate;
+
+    fs.writeFileSync('./data/movies.json', JSON.stringify(movies), (err) => {
+        req.status(200).json({
+            status: "success",
+            data: {
+                movie: movieToUpdate
+            }
+        })
+    })
+
+})
+
+
+
+
+
 
 
 // CREATE A SERVER
