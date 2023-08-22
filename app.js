@@ -23,16 +23,18 @@ app.get('/api/v1/movies', (req, res) => {
 // GET REQUEST - api/v1/movies/id
 
 app.get('/api/v1/movies/:id', (req, res) => {
-    // console.log(req.params);
+   
+    //CONVERT ID TO NUMBER TYPE
     const id  = req.params.id * 1;
-
+    
+    // FIND MOVIE BASED ON ID PARAMETER
     let movie = movies.find(el => el.id === id)
 
 
     res.status(200).json({
         status: "success",
         data: {
-            movie: movies
+            movie: movie
     }
     });
 })
