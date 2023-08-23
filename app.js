@@ -5,8 +5,16 @@ const express = require ('express');
 let app = express();
 let movies = JSON.parse(fs.readFileSync('./data/movies.json'));
 
+
+const logger = function(req, res, next) {
+    console.log ('Custom middleware called'); 
+    next();
+}
+
 app.use(express.json());
 
+app.use(logger);
+ 
 // *********ROUTE HANDLER FUNCTIONS ***********
 const getAllMovies = (req, res) => {
     res.status(200).json({
