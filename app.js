@@ -1,6 +1,7 @@
 // IMPORT PACKAGE
 const fs = require ('fs');
 const express = require ('express');
+const morgan = require('morgan');
 
 let app = express();
 let movies = JSON.parse(fs.readFileSync('./data/movies.json'));
@@ -12,11 +13,13 @@ const logger = function(req, res, next) {
 }
 
 app.use(express.json());
+app.use(morgan('tiny'));
 app.use(logger);
 app.use((req, res, next) => {
     req.requestedAt = new Date().toISOString();
     next();
-}); 
+});
+
 
 
 // *********ROUTE HANDLER FUNCTIONS ***********
