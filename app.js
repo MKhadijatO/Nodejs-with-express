@@ -90,7 +90,7 @@ const deleteMovie = (req, res) => {
     if (!movieToDelete){
         return res.status(404).json({
             status: 'failed',
-            message: 'No movie with ID ' + id + ' is not found'
+            message: 'No movie with ID ' + id + ' was found'
         })
     }
 
@@ -103,6 +103,7 @@ const deleteMovie = (req, res) => {
             status: "success",
             data: {
                 movie: null
+                
             }
         })
     })
@@ -114,11 +115,11 @@ const deleteMovie = (req, res) => {
 // ********* APIs ********
 // GET REQUEST - api/v1/movies
 
-app.get('/api/v1/movies', getAllMovies)
+app.get('/api/v1/movies', getAllMovies);
 
 // GET REQUEST - api/v1/movies/id
 
-app.get('/api/v1/movies/:id', getMovie)
+app.get('/api/v1/movies/:id', getMovie);
 
 //POST REQUEST - api/v1/movies
 
@@ -129,7 +130,7 @@ app.post('/api/v1/movies', createMovie);
 app.patch('/api/v1/movies/:id', updateMovie);
 
 //DELETE DATA
-app.delete('api/v1/movies/:id', deleteMovie)
+app.delete('/api/v1/movies/:id', deleteMovie)
 
 
 
