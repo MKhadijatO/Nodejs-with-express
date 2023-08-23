@@ -12,14 +12,19 @@ const logger = function(req, res, next) {
 }
 
 app.use(express.json());
-
 app.use(logger);
- 
+app.use((req, res, next) => {
+    req.requestedAt = new Date().toISOString();
+    next();
+}); 
+
+
 // *********ROUTE HANDLER FUNCTIONS ***********
 const getAllMovies = (req, res) => {
     res.status(200).json({
         //jsend json formatting 
         status: "success",
+        requestedAt: req.requestedAt,
         count: movies.length,
         data: {
             movie: movies
