@@ -147,7 +147,7 @@ moviesRouter.route('/:id')
     .patch(updateMovie)
     .delete(deleteMovie)
 
-app.use('/api/v1/movies', moviesRoter)
+app.use('/api/v1/movies', moviesRouter)
 
 
 
