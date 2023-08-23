@@ -7,9 +7,8 @@ let movies = JSON.parse(fs.readFileSync('./data/movies.json'));
 
 app.use(express.json());
 
-// GET REQUEST - api/v1/movies
-
-app.get('/api/v1/movies', (req, res) => {
+// *********ROUTE HANDLER FUNCTIONS ***********
+const getAllMovies = (req, res) => {
     res.status(200).json({
         //jsend json formatting 
         status: "success",
@@ -18,11 +17,9 @@ app.get('/api/v1/movies', (req, res) => {
             movie: movies
         }
     });
-})
+}
 
-// GET REQUEST - api/v1/movies/id
-
-app.get('/api/v1/movies/:id', (req, res) => {
+const getMovie = (req, res) => {
    
     //CONVERT ID TO NUMBER TYPE
     const id  = req.params.id * 1;
@@ -37,15 +34,10 @@ app.get('/api/v1/movies/:id', (req, res) => {
             movie: movie
     }
     });
-})
+}
 
 
-
-
-
-//POST REQUEST - api/v1/movies
-
-app.post('/api/v1/movies', (req, res) => {
+const createMovie = (req, res) => {
     //console.log(req.body);
     const newId = movies[movies.length -1].id + 1;
 
@@ -61,11 +53,9 @@ app.post('/api/v1/movies', (req, res) => {
         })
     });
     // res.send('Created');
-});
+}
 
-
-// PATCH REQUEST (UPDATE RESOURCE)
-app.patch('/api/v1/movies/:id', (req, res) => {
+const updateMovie = (req, res) => {
     let id  = req.params.id * 1;
     let movieToUpdate = movies.find(el => el.id === id);
     if (!movieToUpdate){
@@ -90,10 +80,9 @@ app.patch('/api/v1/movies/:id', (req, res) => {
         })
     })
 
-});
+}
 
-//DELETE DATA
-app.delete('api/v1/movies/:id', (req, res) => {
+const deleteMovie = (req, res) => {
     const id = req.params.id * 1;
     const movieToDelete = movies.find(el => el.id === id);
 
@@ -101,7 +90,7 @@ app.delete('api/v1/movies/:id', (req, res) => {
     if (!movieToDelete){
         return res.status(404).json({
             status: 'failed',
-            message: 'No movie with ID ' +id+ ' is not found to delete'
+            message: 'No movie with ID ' + id + ' is not found'
         })
     }
 
@@ -119,9 +108,28 @@ app.delete('api/v1/movies/:id', (req, res) => {
     })
 
 
-})
+}
 
 
+// ********* APIs ********
+// GET REQUEST - api/v1/movies
+
+app.get('/api/v1/movies', getAllMovies)
+
+// GET REQUEST - api/v1/movies/id
+
+app.get('/api/v1/movies/:id', getMovie)
+
+//POST REQUEST - api/v1/movies
+
+app.post('/api/v1/movies', createMovie);
+
+
+// PATCH REQUEST (UPDATE RESOURCE)
+app.patch('/api/v1/movies/:id', updateMovie);
+
+//DELETE DATA
+app.delete('api/v1/movies/:id', deleteMovie)
 
 
 
