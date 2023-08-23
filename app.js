@@ -113,26 +113,21 @@ const deleteMovie = (req, res) => {
 
 
 // ********* APIs ********
-// GET REQUEST - api/v1/movies
-
-app.get('/api/v1/movies', getAllMovies);
-
-// GET REQUEST - api/v1/movies/id
-
-app.get('/api/v1/movies/:id', getMovie);
-
-//POST REQUEST - api/v1/movies
-
-app.post('/api/v1/movies', createMovie);
+// app.get('/api/v1/movies', getAllMovies);
+// app.get('/api/v1/movies/:id', getMovie);
+// app.post('/api/v1/movies', createMovie);
+// app.patch('/api/v1/movies/:id', updateMovie);
+// app.delete('/api/v1/movies/:id', deleteMovie)
 
 
-// PATCH REQUEST (UPDATE RESOURCE)
-app.patch('/api/v1/movies/:id', updateMovie);
 
-//DELETE DATA
-app.delete('/api/v1/movies/:id', deleteMovie)
-
-
+app.route('/api/v1/movies')
+    .get(getAllMovies)
+    .post(createMovie)
+app.route('/api/v1/movies/:id')
+    .get(getMovie)
+    .patch(updateMovie)
+    .delete(deleteMovie)
 
 
 
