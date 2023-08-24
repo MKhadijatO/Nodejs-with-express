@@ -1,6 +1,7 @@
 const app = require('./app');
 
-
+//console.log(app.get('env'));
+console.log(process.env);
 
 
 // CREATE A SERVER
