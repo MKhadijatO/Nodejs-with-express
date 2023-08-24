@@ -14,7 +14,11 @@ const logger = function(req, res, next) {
 
 //middleware
 app.use(express.json());
-app.use(morgan('tiny'));
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
 app.use(express.static('./public'));
 app.use(logger);
 app.use((req, res, next) => { 
