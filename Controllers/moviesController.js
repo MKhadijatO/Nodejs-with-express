@@ -5,12 +5,28 @@ const Movie = require('./../Models/movieModel')
 
 
 // *********ROUTE HANDLER FUNCTIONS ***********
-exports.getAllMovies = (req, res) => {
+exports.getAllMovies = async (req, res) => {
+    try {
+        const movies = await Movie.find();
+        res.status(200).json({
+            status: 'success',
+            length: movies.length,
+            data: {
+                 movies
+                }       
+         });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: error.message
+        })
+    
+        
+    }
     
 }
 
-exports.getMovie = (req, res) => {
-    
+exports.getMovie = async (req, res) => {
     
 }
 
