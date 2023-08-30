@@ -17,43 +17,12 @@ mongoose.connect(process.env.CONN_STR, {
 }); 
 
 
-const movieSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Name is required'],
-        unique: true
-    },
-    description: String,
-    duration: {
-        type: Number,
-        required: [true, 'Duration is required']
-    },
-    rating: {
-        type: Number,
-        default: 1.0
-    }
-});
 
-const Movie = mongoose.model('Movie', movieSchema);
- 
-const testMovie = new Movie ({
-    name:"Avatar",
-    description: "adventures of avatar Ang",
-    duration: 120,
-    rating: 4
-}); 
-
- testMovie.save()
- .then((doc) => {
-    console.log(doc);
- }) 
- .catch(err => {
-    console.log("Error: " + err);
- });;
+  
 
 // CREATE A SERVER
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log('server has started...');
-})
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//     console.log('server has started...');
+// })
