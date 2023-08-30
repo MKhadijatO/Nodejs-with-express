@@ -32,7 +32,7 @@ const movieSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    genre: {
+    genres: {
         type: [String],
         required: [true, 'Genres is required']
     }, 
@@ -42,7 +42,7 @@ const movieSchema = new mongoose.Schema({
     },
     coverImage: {
         type: String,
-        require: [true, 'Cover image is required']
+        required: [true, 'Cover image is required']
     },
     actors: {
         type: [String],
