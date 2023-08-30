@@ -34,7 +34,22 @@ const movieSchema = new mongoose.Schema({
     }
 });
 
-const Movie = mongoose.model('Movie', moviesSchema);
+const Movie = mongoose.model('Movie', movieSchema);
+ 
+const testMovie = new Movie ({
+    name:"Avatar",
+    description: "adventures of avatar Ang",
+    duration: 120,
+    rating: 4
+}); 
+
+ testMovie.save()
+ .then((doc) => {
+    console.log(doc);
+ }) 
+ .catch(err => {
+    console.log("Error: " + err);
+ });;
 
 // CREATE A SERVER
 
