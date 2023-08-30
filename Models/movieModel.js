@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Duration is required']
     },
-    rating: {
+    ratings: {
         type: Number,
         default: 1.0
     }

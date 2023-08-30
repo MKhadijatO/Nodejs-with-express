@@ -22,7 +22,7 @@ mongoose.connect(process.env.CONN_STR, {
 
 // CREATE A SERVER
 
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => {
-//     console.log('server has started...');
-// })
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log('server has started...');
+})
