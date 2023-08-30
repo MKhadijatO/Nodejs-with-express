@@ -34,7 +34,7 @@ const movieSchema = new mongoose.Schema({
     }
 });
 
-const movies = mongoose.model('Movie', moviesSchema);
+const Movie = mongoose.model('Movie', moviesSchema);
 
 // CREATE A SERVER
 
