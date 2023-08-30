@@ -15,10 +15,10 @@ exports.getAllMovies = async (req, res) => {
                  movies
                 }       
          });
-    } catch (error) {
+    } catch (err) {
         res.status(404).json({
             status: 'fail',
-            message: error.message
+            message: err.message
         })
     
         
@@ -37,10 +37,10 @@ exports.getMovie = async (req, res) => {
                 movie
                 }       
         });
-    }catch (error) {
+    }catch (err) {
         res.status(404).json({
             status: 'fail',
-            message: error.message
+            message: err.message
         })
     
         
@@ -71,8 +71,26 @@ exports.createMovie = async (req, res) => {
 
 }
 
-exports.updateMovie = (req, res) => {
+exports.updateMovie = async (req, res) => {
+    try {
+        const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+        
+        res.status(201).json({
+            status: 'success',
+            data: {
+                movie: updatedMovie
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'error',
+            message: err.message
+        }) 
     }
+
+
+
+}
 
 exports.deleteMovie = (req, res) => {
     
