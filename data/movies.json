@@ -1,19 +1,153 @@
 [
-    {"id":1,"name":"virus","releaseYear":2020,"duration":90},
-    {"id":2,"name":"Vengeance","releaseYear":2000,"duration":80},
-    {"id":3,"name":"Happy","releaseYear":2023,"duration":60},
-    {"id":4,"name":"Justice","releaseYear":2010,"duration":120},
-    {"id":7,"name":"Expendables","releaseYear":2017,"duration":90},
-    {"id":8,"name":"Test","releaseYear":2015,"duration":90},
-    {"id":9,"name":"Die Hard","releaseYear":2008,"duration":120},
-    {"id":10,"name":"Test","releaseYear":2015,"duration":90},
-    {"id":11,"name":"Test","releaseYear":2015,"duration":90},
-    {"id":12,"name":"You","releaseYear":2015,"duration":80},
-    {"id":13,"name":"When","releaseYear":2005,"duration":90},
-    {"id":14,"name":"When","releaseYear":2005,"duration":90},
-    {"id":17,"name":"What?","releaseYear":2016,"duration":90},
-    {"id":18,"name":"Avatar","releaseYear":2006,"duration":120}
+    {
+        "name": "Inspection",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 1500000,
+        "releaseYear": 2008,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "inspection.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 7
+    },
+    {
+        "name": "Laughter",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 1500000,
+        "releaseYear": 2011,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "laughter.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 8
+    },
+    {
+        "name": "Love",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 1500000,
+        "releaseYear": 2019,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "love.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 6
+    },
+    {
+        "name": "Merrymen",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 70000,
+        "releaseYear": 2008,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "merrymen.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 7
+    },
+    {
+        "name": "Obsession",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 1500000,
+        "releaseYear": 2008,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "obsession.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 9.9
+    },
+    {
+        "name": "Justice",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 1500000,
+        "releaseYear": 2018,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "justice.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 8
+    },
+    {
+        "name": "Forever",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "rating": 8,
+        "totalRating": 2500000,
+        "releaseYear": 2010,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "forever.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 8
+    }
 ]
+
 
 
 
