@@ -3,7 +3,7 @@
         "name": "Inspection",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 1500000,
         "releaseYear": 2008,
         "releaseDate": "2010-07-16",
@@ -24,7 +24,7 @@
         "name": "Laughter",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 1500000,
         "releaseYear": 2011,
         "releaseDate": "2010-07-16",
@@ -45,7 +45,7 @@
         "name": "Love",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8.5,
         "totalRating": 1500000,
         "releaseYear": 2019,
         "releaseDate": "2010-07-16",
@@ -66,7 +66,7 @@
         "name": "Merrymen",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 70000,
         "releaseYear": 2008,
         "releaseDate": "2010-07-16",
@@ -87,7 +87,7 @@
         "name": "Obsession",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 1500000,
         "releaseYear": 2008,
         "releaseDate": "2010-07-16",
@@ -108,7 +108,7 @@
         "name": "Justice",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 1500000,
         "releaseYear": 2018,
         "releaseDate": "2010-07-16",
@@ -123,13 +123,13 @@
             "Leonardo DiCaprio", 
             "Joseph Gordon-Levitt", 
             "Ellen Page"],
-        "price": 8
+        "price": 10
     },
     {
         "name": "Forever",
         "description": "A mind-bending movie about dreams within dreams.",
         "duration": 160,
-        "rating": 8,
+        "ratings": 8,
         "totalRating": 2500000,
         "releaseYear": 2010,
         "releaseDate": "2010-07-16",
@@ -144,7 +144,28 @@
             "Leonardo DiCaprio", 
             "Joseph Gordon-Levitt", 
             "Ellen Page"],
-        "price": 8
+        "price": 15
+    },
+    {
+        "name": "Lost",
+        "description": "A mind-bending movie about dreams within dreams.",
+        "duration": 160,
+        "ratings": 9,
+        "totalRating": 500000,
+        "releaseYear": 2010,
+        "releaseDate": "2010-07-16",
+        "genres": [
+            "Science Fiction", 
+            "Action", 
+            "Thriller"
+        ],
+        "directors": ["Christopher Nolan"],
+        "coverImage": "lost.jpg",
+        "actors": [
+            "Leonardo DiCaprio", 
+            "Joseph Gordon-Levitt", 
+            "Ellen Page"],
+        "price": 12
     }
 ]
 

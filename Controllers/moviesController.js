@@ -7,7 +7,25 @@ const Movie = require('./../Models/movieModel')
 // *********ROUTE HANDLER FUNCTIONS ***********
 exports.getAllMovies = async (req, res) => {
     try {
-        const movies = await Movie.find();
+
+        // const excludeFields = ['sort', 'page', 'limit', 'fields'];
+
+        // const queryObj = {...req.query};
+
+        // excludeFields.forEach((el) => {
+        //     delete queryObj[el];
+        // })
+
+        // const movies = await Movie.find(queryObj);
+
+        const movies = await Movie.find(req.query); 
+
+        // const movies = await Movie.find()
+        //                     .where('duration')
+        //                     .equals(req.params.duration)
+        //                     .where('ratings')
+        //                     .equals(req.params.ratings);
+
         res.status(200).json({
             status: 'success',
             length: movies.length,
@@ -15,6 +33,7 @@ exports.getAllMovies = async (req, res) => {
                  movies
                 }       
          });
+
     } catch (err) {
         res.status(404).json({
             status: 'fail',
