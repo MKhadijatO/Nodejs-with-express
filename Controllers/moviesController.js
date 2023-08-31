@@ -22,9 +22,23 @@ exports.getAllMovies = async (req, res) => {
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
         const queryObj = JSON.parse(queryStr);
 
-        const movies = await Movie.find(queryObj);
+        let query = Movie.find();
 
-      
+ 
+        if(req.query.sort){
+            const sortBy = req.query.sort.split(',').join(' ');
+            console.log(sortBy);
+            query = query.sort(sortBy);
+        }
+        else{
+            query = query.sort('-createdAt');
+        }
+ 
+        
+        const movies = await query;
+
+
+      //using mongoose special fxns for filtering
         // const movies = await Movie.find()
         //                     .where('duration')
         //                     .gte(req.query.duration)
@@ -37,7 +51,7 @@ exports.getAllMovies = async (req, res) => {
             status: 'success',
             length: movies.length,
             data: {
-                 movies
+                movies
                 }       
          });
 
