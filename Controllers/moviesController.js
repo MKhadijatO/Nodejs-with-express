@@ -15,16 +15,23 @@ exports.getAllMovies = async (req, res) => {
         // excludeFields.forEach((el) => {
         //     delete queryObj[el];
         // })
-
         // const movies = await Movie.find(queryObj);
+        
 
-        const movies = await Movie.find(req.query); 
+        let queryStr = JSON.stringify(req.query);
+        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
+        const queryObj = JSON.parse(queryStr);
 
+        const movies = await Movie.find(queryObj);
+
+      
         // const movies = await Movie.find()
         //                     .where('duration')
-        //                     .equals(req.params.duration)
+        //                     .gte(req.query.duration)
         //                     .where('ratings')
-        //                     .equals(req.params.ratings);
+        //                     .gte(req.query.ratings)
+        //                     .where('price')
+        //                     .lte(req.query.price);
 
         res.status(200).json({
             status: 'success',
