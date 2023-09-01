@@ -43,6 +43,14 @@ exports.getAllMovies = async (req, res) => {
             query = query.select('-__v');
         }
 
+
+        //PAGINATION
+        const page = req.query.page * 1 || 1;
+        const limit = req.query.limit * 1 || 10;
+        const skip = (page - 1) * limit;
+        query = query.skip(skip).limit(limit);
+
+
         
         const movies = await query;
 
