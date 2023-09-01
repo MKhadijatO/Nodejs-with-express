@@ -9,6 +9,8 @@ router.route('/highest-rated').get(moviesController.getHighestRated, moviesContr
 
 router.route('/movie-stats').get(moviesController.getMovieStats);
 
+router.route('/movies-by-genre/:id').get(moviesController.getMovieByGenre);
+
 router.route('/')
     .get(moviesController.getAllMovies)
     .post(moviesController.createMovie)
