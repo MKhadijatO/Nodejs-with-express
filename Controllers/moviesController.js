@@ -1,13 +1,19 @@
 
 const Movie = require('./../Models/movieModel')
 
- 
 
+
+exports.getHighestRated = async (req, res, next) => {
+    req.query.limit = '5';
+    req.query.sort = '-ratings';
+
+    next();
+}
 
 // *********ROUTE HANDLER FUNCTIONS ***********
 exports.getAllMovies = async (req, res) => {
     try {
-
+        
         // const excludeFields = ['sort', 'page', 'limit', 'fields'];
 
         // const queryObj = {...req.query};
