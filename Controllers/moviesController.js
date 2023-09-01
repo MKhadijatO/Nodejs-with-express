@@ -164,7 +164,9 @@ exports.getMovieByGenre = async (req, res) => {
                 movies: {$push: '$name'},          
             }},
             {$addFields: {genre: '$_id'}},
-            {$project: {_id:0}}
+            {$project: {_id:0}},
+            {$sort: {movieCount:-1}},
+            {$limit: 2} // limit result to the number specified
 
         ]); 
 
