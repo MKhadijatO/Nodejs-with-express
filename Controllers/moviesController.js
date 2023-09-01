@@ -157,7 +157,14 @@ exports.getMovieByGenre = async (req, res) => {
     try {
         const genre = req.params.genre;
         const movies = await Movie.aggregate([
-            {$unwind: '$genres'}
+            {$unwind: '$genres'},
+            {$group: {
+                _id: '$genres',
+                movieCount: {$sum: 1},
+                movies: {$push: '$name'},          
+            }},
+            {$addFields: {genre: '$_id'}},
+            {$project: {_id:0}}
 
         ]); 
 
