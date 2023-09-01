@@ -24,16 +24,23 @@ exports.getAllMovies = async (req, res) => {
 
         let query = Movie.find();
 
- 
+        //SORTING LOGIC
         if(req.query.sort){
             const sortBy = req.query.sort.split(',').join(' ');
             console.log(sortBy);
-            query = query.sort(sortBy);
-        }
-        else{
+            query = query.sort(req.query.sort);
+        }else{
             query = query.sort('-createdAt');
         }
  
+        //LIMITING FIELDS
+        if(req.query.fields){
+            // query.select('name description duration price ratings')
+            const fields = req.query.fields.split(',').join(' ');
+            console.log(fields);
+            query = query.select(fields);
+        };
+
         
         const movies = await query;
 
