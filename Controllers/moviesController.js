@@ -39,7 +39,9 @@ exports.getAllMovies = async (req, res) => {
             const fields = req.query.fields.split(',').join(' ');
             console.log(fields);
             query = query.select(fields);
-        };
+        }else{
+            query = query.select('-__v');
+        }
 
         
         const movies = await query;
