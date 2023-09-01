@@ -124,7 +124,7 @@ exports.getMovieStats = async (req, res) => {
         const stats = await Movie.aggregate([
             { $match: {ratings:{$gte: 5}}},
             { $group: {
-                _id: null,
+                _id: '$releaseYear',
                 avgRating: {$avg: '$ratings'},
                 avgPrice: {$avg: '$price'},
                 minPrice: {$min: '$price'},
