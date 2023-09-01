@@ -50,6 +50,12 @@ exports.getAllMovies = async (req, res) => {
         const skip = (page - 1) * limit;
         query = query.skip(skip).limit(limit);
 
+        if(req.query.page){
+            const moviesCount = await Movie.countDocuments();
+            if(skip >= moviesCount){
+                throw new Error('This page is not found')
+            }
+        }
 
         
         const movies = await query;
