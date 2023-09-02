@@ -70,7 +70,7 @@ movieSchema.virtual('durationInHours').get(function () {
 //EXECUTED BEFORE THE DOCUMENT IS SAVED IN DB
 //docs EVENT HAPPENS WHEN .save() OR .create() is called .(can be more than one hooks)
 
-//pre save hooks
+//pre save hooks DOCUMENT MIDDLEWARE
 movieSchema.pre('save', function (next) {
     this.createdBy = "Somebody"; 
 
@@ -86,7 +86,21 @@ movieSchema.post('save', function (doc, next) {
 
     next();
     
-})
+});
+
+
+//pre hook for QUERY MIDDLEWARE
+movieSchema.pre(/^find/, function(next){
+    this.find({releaseDate: {$lte: Date.now()}})
+
+    next();
+}); 
+                    //OR
+// movieSchema.pre('find', function(next){
+//     this.find({releaseDate: {$lte: Date.now()}})
+
+//     next();
+// });
  
 const Movie = mongoose.model('Movie', movieSchema);
 
