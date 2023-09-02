@@ -1,3 +1,4 @@
 This is a content for log.txt with a new name Found and was created by Somebody
 This is a content for log.txt with a new name Party and was created by Somebody
 This is a content for log.txt with a new name Sample Movie and was created by Somebody
+Query took 244 ms to fetch the documents.

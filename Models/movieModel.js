@@ -92,7 +92,7 @@ movieSchema.post('save', function (doc, next) {
 //pre hook for QUERY MIDDLEWARE
 movieSchema.pre(/^find/, function(next){
     this.find({releaseDate: {$lte: Date.now()}})
-
+    this.startTime = Date.now();
     next();
 }); 
                     //OR
@@ -101,6 +101,22 @@ movieSchema.pre(/^find/, function(next){
 
 //     next();
 // });
+
+//post hook for QUERY MIDDLEWARE
+movieSchema.post(/^find/, function(docs, next){
+    this.find({releaseDate: {$lte: Date.now()}})
+    this.endTime = Date.now();
+
+    const content = `Query took ${this.endTime - this.startTime} ms to fetch the documents.`; 
+    fs.writeFileSync('./Log/log.txt', content, {flag:'a'}, (err) =>{
+        console.log(err.message);
+    });
+
+    next();
+}); 
+
+
+
  
 const Movie = mongoose.model('Movie', movieSchema);
 
