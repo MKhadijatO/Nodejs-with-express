@@ -52,17 +52,28 @@ const movieSchema = new mongoose.Schema({
     price: {
         type: Number,
         require: [true, 'Price is required']
-    }
+    },
+    createdBy: String
 
 }, {
     toJSON: {virtuals: true},
     toObject: {virtuals: true}
 });
 
-movieSchema.virtual('durationInHours').get(function (req, res) {
+movieSchema.virtual('durationInHours').get(function () {
     return this.duration / 60;
 });
 
+//EXECUTED BEFORE THE DOCUMENT IS SAVED IN DB
+//SAVE EVENT HAPPPENS WHEN .save() OR .create() is called
+//pre hooks
+movieSchema.pre('save', function (next) {
+   
+    this.createdBy = "Somebody"; 
+
+    next();
+})
+ 
 const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;
