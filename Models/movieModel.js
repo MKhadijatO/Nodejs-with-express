@@ -116,8 +116,13 @@ movieSchema.post(/^find/, function(docs, next){
 }); 
 
 
+//AGGREGATION MIDDLEWARE
+movieSchema.pre('aggregate', function(next){
+    console.log(this.pipeline().unshift({$match: {releaseDate: {$lte: new Date}}})); 
+    next();
+})
 
- 
+
 const Movie = mongoose.model('Movie', movieSchema);
 
 module.exports = Movie;

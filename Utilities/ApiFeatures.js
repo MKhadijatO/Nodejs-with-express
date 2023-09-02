@@ -10,7 +10,7 @@ class ApiFeatures {
         queryString = queryString.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
         const queryObj = JSON.parse(queryString);
 
-        this.query = this.query.find();
+        this.query = this.query.find(queryObj);
 
         return this;
     }
@@ -19,8 +19,9 @@ class ApiFeatures {
         if(this.queryStr.sort){
             const sortBy = this.queryStr.sort.split(',').join(' ');
             this.query = this.query.sort(sortBy);
-        }else{
-            this.query = this.query.sort('-createdAt');
+        }
+        else{
+            this.query.sort('-createdAt');
         }
 
         return this;

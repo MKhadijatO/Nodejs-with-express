@@ -122,7 +122,7 @@ exports.deleteMovie = async (req, res) => {
 exports.getMovieStats = async (req, res) => {
     try {
         const stats = await Movie.aggregate([
-            { $match: {ratings:{$gte: 5}}},
+            { $match: {ratings: {$gte: 5}}},
             { $group: {
                 _id: '$releaseYear',
                 avgRating: {$avg: '$ratings'},
@@ -130,10 +130,10 @@ exports.getMovieStats = async (req, res) => {
                 minPrice: {$min: '$price'},
                 maxPrice: {$max: '$price'},
                 priceTotal:{$sum: '$price'},
-                movieCount: {$sum: 1},
+                movieCount: {$sum: 1}
             }},
-            {$sort: {minPrice: 1}},
-            { $match: {maxPrice:{$gte: 8}}}
+            { $sort: {minPrice: 1}},
+            //{ $match: {maxPrice:{$gte: 8}}}
         ]);
 
         res.status(200).json({
