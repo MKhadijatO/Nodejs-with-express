@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+
+const fs = require('fs');
+
 const movieSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -65,13 +68,24 @@ movieSchema.virtual('durationInHours').get(function () {
 });
 
 //EXECUTED BEFORE THE DOCUMENT IS SAVED IN DB
-//SAVE EVENT HAPPPENS WHEN .save() OR .create() is called
-//pre hooks
+//docs EVENT HAPPENS WHEN .save() OR .create() is called .(can be more than one hooks)
+
+//pre save hooks
 movieSchema.pre('save', function (next) {
-   
     this.createdBy = "Somebody"; 
 
     next();
+});
+ 
+//post save hooks
+movieSchema.post('save', function (doc, next) {
+    const content = `This is a content for log.txt with a new name ${doc.name} and was created by ${doc.createdBy}\n`; 
+    fs.writeFileSync('./Log/log.txt', content, {flag:'a'}, (err) =>{
+        console.log(err.message);
+    });
+
+    next();
+    
 })
  
 const Movie = mongoose.model('Movie', movieSchema);
