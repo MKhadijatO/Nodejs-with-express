@@ -3,6 +3,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const moviesRouter = require('./Routes/moviesRoutes');
+const CustomError = require('./Utilities/CustomError');
+const globalErrorHandler = require('./Controllers/errorController');
 
 
 let app = express();
@@ -36,22 +38,15 @@ app.all('*', (req, res, next) => {
     //     status:'fail',
     //     message:`Can't find ${req.originalUrl} on the server`
     // });
-    const err = new Error(`Can't find ${req.originalUrl} on the server`);
-    err.status = 'fail';
-    err.statusCode = 404;
+    // const err = new Error(`Can't find ${req.originalUrl} on the server`);
+    // err.status = 'fail';
+    // err.statusCode = 404;
+    const err = new CustomError(`Can't find ${req.originalUrl} on the server`, 404)
 
     next(err);
 })
-
-app.use((error, req, res, next) => {
-    error.statusCode = error.statusCode || 500;
-    error.status = error.status || 'error';
-    res.status(error.statusCode).json({
-        status: error.statusCode,
-        message:error.message
-    });
-
-})
+ 
+app.use(globalErrorHandler);
 
 
 module.exports = app;
