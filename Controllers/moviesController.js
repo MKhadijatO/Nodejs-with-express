@@ -83,7 +83,7 @@ exports.createMovie = async (req, res) => {
 
 exports.updateMovie = async (req, res) => {
     try {
-        const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
+        const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
         
         res.status(200).json({
             status: 'success',
