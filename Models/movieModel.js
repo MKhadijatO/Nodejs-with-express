@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 const fs = require('fs');
+const validator = require('validator');
 
 const movieSchema = new mongoose.Schema({
     name: {
@@ -9,7 +9,8 @@ const movieSchema = new mongoose.Schema({
         maxlength:[100, 'Movie name must not have more than 100 characters'], //max&minlength can only be used on fields of type; String
         minlength:[4, 'Movie name must have more than 4 characters'],
         unique: true,
-        trim: true
+        trim: true,
+        validate: [validator.isAlpha, "Name should only contain alphabets"]
     },
     description: {
         type: String,
@@ -22,8 +23,13 @@ const movieSchema = new mongoose.Schema({
     },
     ratings: {
         type: Number,
-        min: [1, 'Ratings must be 1 or above'],
-        max: [10, 'Ratings must be 10 or bellow'],
+        validate: {
+            validator: function(value) {
+                return value >= 1 && value <= 10;
+            }, 
+            message: 'Ratings ({VALUE}) must be from 1 to 10'
+        }
+        
     },
     totalRating:{
         type: Number,
