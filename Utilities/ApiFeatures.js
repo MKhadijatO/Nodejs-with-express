@@ -14,26 +14,13 @@ class ApiFeatures {
 
   //     this.query = this.query.find(queryObj);
 
-<<<<<<< HEAD
-        this.query = this.query.find(queryObj);
-=======
   //     return this;
   //   }
->>>>>>> 820e81a (Modified code)
 
   filter() {
     // Create a query object to store the filter criteria
     const queryObj = { ...this.queryStr };
 
-<<<<<<< HEAD
-    sort() {
-        if(this.queryStr.sort){
-            const sortBy = this.queryStr.sort.split(',').join(' ');
-            this.query = this.query.sort(sortBy);
-        }
-        else{
-            this.query.sort('-createdAt');
-=======
     // Exclude fields that are not meant for filtering
     const excludedFields = ["page", "limit", "sort", "fields"];
     excludedFields.forEach((el) => delete queryObj[el]);
@@ -48,7 +35,6 @@ class ApiFeatures {
         } else {
           // Handle string fields with case-insensitive search
           queryObj[key] = { $regex: new RegExp(queryObj[key], "i") };
->>>>>>> 820e81a (Modified code)
         }
       }
     }
