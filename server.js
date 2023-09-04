@@ -1,28 +1,27 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config({path: './config.env'});
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
 
-const app = require('./app');
+const app = require("./app");
 
 //console.log(app.get('env'));
 console.log(process.env);
 
-mongoose.connect(process.env.CONN_STR, {
-    useNewUrlParser: true
-}).then((conn) => {
+mongoose
+  .connect(process.env.CONN_STR, {
+    useNewUrlParser: true,
+  })
+  .then((conn) => {
     //console.log(conn);
-    console.log('DB connection successful');
-}).catch((error) => {
-    console.log('Some error occurred');
-}); 
-
-
-
-  
+    console.log("DB connection successful");
+  })
+  .catch((error) => {
+    console.log("Some error occurred");
+  });
 
 // CREATE A SERVER
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log('server has started...');
-})
+  console.log(`Server has started on port ${port}`);
+});
