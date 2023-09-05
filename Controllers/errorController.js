@@ -1,3 +1,8 @@
+const CustomError = require('./../Utilities/CustomError');
+
+
+
+
 const devErrors = (res, error) => {
     res.status(error.statusCode).json({
         status: error.statusCode,
@@ -7,8 +12,13 @@ const devErrors = (res, error) => {
     });
 }
 
+const castErrorHandler = (err) => {
+    const msg  = `Invalid value for ${err.path}: ${err.value}!`;
+    return new CustomError(msg, 400);
+}
+
 const prodErrors = (res, error) => {
-    if (error.isOperational){
+    if(error.isOperational){
         res.status(error.statusCode).json({
             status: error.statusCode,
             message:error.message
@@ -30,6 +40,12 @@ module.exports = (error, req, res, next) => {
     if (process.env.NODE_ENV === 'development'){
         devErrors(res, error);
     } else if(process.env.NODE_ENV === 'production'){
+    //    let error = {...error};
+    //     console.log(error);
+        if(error.name === 'CastError'){
+            error = castErrorHandler(error);
+            console.log('if statement called');
+        }
         prodErrors(res, error);
     }
-}
+} 
