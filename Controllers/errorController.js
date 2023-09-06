@@ -24,6 +24,14 @@ const duplicateKeyErrorHandler = (err) => {
     return new CustomError(msg, 400);
 }
 
+const validationErrorHandler = (err) => {
+    const errors =  Object.values(err.errors).map(val => val.message)
+    const errorMessages = errors.join('. ');
+    const msg = `Invalid input data: ${errorMessages}`;
+    
+    return new CustomError(msg, 400);
+}
+
 const prodErrors = (res, error) => {
     if(error.isOperational){
         res.status(error.statusCode).json({
@@ -48,8 +56,9 @@ module.exports = (error, req, res, next) => {
         devErrors(res, error);
     } else if(process.env.NODE_ENV === 'production'){
         if(error.name === 'CastError') error = castErrorHandler(error);
-        if(error.code === 11000) error = duplicateKeyErrorHandler(error)
+        if(error.code === 11000) error = duplicateKeyErrorHandler(error);
+        if(error.name === 'validatorError') error = validationErrorHandler(error)
 
-        prodErrors(res, error);
+        prodErrors(res, error); 
     }
 } 

@@ -1,4 +1,4 @@
-const {param} = require('../Routes/moviesRoutes');
+// const {param} = require('../Routes/moviesRoutes');
 const CustomError = require('../Utilities/CustomError');
 const Movie = require('./../Models/movieModel');
 const ApiFeatures = require('./../Utilities/ApiFeatures.js');
