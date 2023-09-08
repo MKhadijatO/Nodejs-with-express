@@ -60,6 +60,9 @@ const movieSchema = new mongoose.Schema(
     createdBy: String,
   },
   {
+    timestamps: true,
+  },
+  {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
